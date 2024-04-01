@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myTeam">
+    <insert id="registration" parameterType="teamDTO">
+        insert into myTeam_table(playerName, playerPosition, playerToll, playerAge, playerBackNumber)
+            values(#{playerName}, #{playerPosition}, #{playerToll}, #{playerAge}, #{playerBackNumber})
+    </insert>
+    <select id="findAll" resultType="teamDTO">
+        select * from myTeam_table
+    </select>
+    <select id="findTop5Goal" resultType="teamDTO">
+        select playerName, playerPosition, playerGoal, playerQuarterGoal, playerBackNumber
+        from myTeam_table
+        order by playerQuarterGoal DESC
+        limit 5
+    </select>
+    <select id="findTop5Assist" resultType="teamDTO">
+        select playerName, playerPosition, playerAssist, playerQuarterAssist, playerBackNumber
+        from myTeam_table
+        order by playerQuarterAssist DESC
+        limit 5
+    </select>
+    <select id="findTop5Steel" resultType="teamDTO">
+        select playerName, playerPosition, playerSteel, playerQuarterSteel, playerBackNumber
+        from myTeam_table
+        order by playerQuarterSteel DESC
+        limit 5
+    </select>
+    <select id="findTop5Block" resultType="teamDTO">
+        select playerName, playerPosition, playerBlock, playerQuarterBlock, playerBackNumber
+        from myTeam_table
+        order by playerQuarterBlock DESC
+        limit 5
+    </select>
+    <select id="findTop5Rebound" resultType="teamDTO">
+        select playerName, playerBackNumber, playerPosition, playerQuarterRebound, playerQuarterOr,
+        playerQuarterDr, playerRebound
+        from myTeam_table
+        order by playerQuarterRebound DESC
+        limit 5
+    </select>
+    <select id="findTop5TurnOver" resultType="teamDTO">
+        select playerName, playerPosition, playerTurnOver, playerQuarterTurnOver, playerBackNumber
+        from myTeam_table
+        order by playerQuarterTurnOver DESC
+        limit 5
+    </select>
+    <update id="saveResult" parameterType="teamDTO">
+        update myTeam_table
+
+    </update>
+</mapper>

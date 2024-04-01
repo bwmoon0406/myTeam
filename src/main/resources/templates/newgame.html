@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>새게임</title>
+    <style>
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+	    -webkit-appearance: inner-spin-button;
+        opacity: 1;
+        }
+
+        .table {
+        display: table;
+        width : 100%
+        border-collapse: collapse;
+        }
+
+        .table-header, .table-body {
+        display: table-row-group;
+        border-collapse: collapse;
+        margin: 0 auto;
+        }
+
+        .table-header {
+         font-weight: bold;
+         margin: 0 auto;
+         text-align: center;
+         padding-top: 10px;
+        }
+
+        .table-cell {
+        display: table-cell;
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 50px;
+        height: 40px;
+        text-align: center;
+        }
+
+        .table-row {
+        display: table-row;
+        border-collapse: collapse;
+        }
+
+        .cell {
+        width: 50px;
+        height: 40px;
+        }
+
+        .submit {
+        padding: 10px;
+        position: static;
+        }
+
+        .submitButton {
+        padding: 10px;
+
+        }
+
+    </style>
+</head>
+<body>
+<form action="/saveResult" method="post">
+    <label for="calender"> 경기일 :
+        <input type="date" id="calender" max="2070-12-31" min="2024-03-26" value="2024-04-03">
+    </label>
+    <label>
+        <select name="vsTeam" id="vsTeamSelect">
+            <option value="" selected>팀 선택(필수)</option>
+            <option value="AvsB">A팀 vs B팀</option>
+            <option value="BvsC">B팀 vs C팀</option>
+            <option value="CvsA">C팀 vs A팀</option>
+        </select>
+    </label>
+    <label>
+        <select name="gameCount">
+            <option value="" selected>경기설정(필수)</option>
+            <option value="1g">1 경기</option>
+            <option value="2g">2 경기</option>
+            <option value="3g">3 경기</option>
+            <option value="4g">4 경기</option>
+        </select>
+    </label>
+    <label>
+        <select name="gameQuarter">
+            <option value="" selected>쿼터설정(필수)</option>
+            <option value="1q">1 쿼터</option>
+            <option value="2q">2 쿼터</option>
+            <option value="3q">3 쿼터</option>
+            <option value="4q">4 쿼터</option>
+        </select>
+    </label>
+    <!--경기 결과입력-->
+    <div class="table">
+        <div class="table-header" style="text-align: center">
+            <div class="table-cell">순번</div>
+            <div class="table-cell">이름</div>
+            <div class="table-cell">어시</div>
+            <div class="table-cell">스틸</div>
+            <div class="table-cell">블럭</div>
+            <div class="table-cell">리바</div>
+            <div class="table-cell">공리</div>
+            <div class="table-cell">수리</div>
+            <div class="table-cell">실책</div>
+            <div class="table-cell">쿼터</div>
+        </div>
+        <div class="table-body">
+            <div class="table-row">
+                <div class="table-cell" value="1">1</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="2">2</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="3">3</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="4">4</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="5">5</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="6">6</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="7">7</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="8">8</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="9">9</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="10">10</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+            </div>
+        </div>
+    </div>
+    <span class="submit"><input type="submit" value="저장" class="submitButton"></span>
+</form>
+<script>
+    window.onload = function() {
+    var numberInputs = document.querySelectorAll('input[type="number"]');
+    numberInputs.forEach(function(input) {
+    input.value = '0';
+    });
+    }
+</script>
+</body>
+</html>
