@@ -11,7 +11,7 @@
         select * from myTeam_table
     </select>
     <select id="findTop5Goal" resultType="teamDTO">
-        select playerName, playerPosition, playerGoal, playerQuarterGoal, playerBackNumber
+        select playerName, playerPosition, playerGoal, (playerGoal / playQuarter ) AS playerQuarterGoal, playerBackNumber
         from myTeam_table
         order by playerQuarterGoal DESC
         limit 5
@@ -49,6 +49,23 @@
     </select>
     <update id="saveResult" parameterType="teamDTO">
         update myTeam_table
-
+        set playerAssist = playerAssist + #{playerAssist},
+            playerSteel = playerSteel + #{playerSteel},
+            playerBlock = playerBlock + #{playerBlock},
+            playerOr = playerOr + #{playerOr},
+            playerDr = playerDr + #{playerDr},
+            playerRebound = playerRebound + #{playerRebound},
+            playerGoal = playerGoal + #{playerGoal},
+            playerTurnOver = playerTurnOver + #{playerTurnOver},
+            playerQuarterAssist = (playerAssist + #{playerAssist}) /4,
+            playerQuarterSteel = (playerSteel + #{playerSteel}) /4,
+            playerQuarterBlock = (playerBlock + #{playerBlock}) /4,
+            playerQuarterOr = (playerOr + #{playerOr}) /4,
+            playerQuarterDr = (playerDr + #{playerDr}) /4,
+            playerQuarterRebound = (playerRebound + #{playerRebound}) /4,
+            playerQuarterGoal = (playerGoal + #{playerGoal}) /4,
+            playerQuarterTurnOver = (playerTurnOver + #{playerTurnOver}) /4,
+            playQuarter = playQuarter + 1
+        where playerName = #{playerName};
     </update>
 </mapper>

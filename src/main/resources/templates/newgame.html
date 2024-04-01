@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>새게임</title>
@@ -8,13 +8,14 @@
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
 	    -webkit-appearance: inner-spin-button;
+        width: 50px;
+        height: 50px;
         opacity: 1;
         }
 
         .table {
         display: table;
         width : 100%
-        border-collapse: collapse;
         }
 
         .table-header, .table-body {
@@ -47,6 +48,7 @@
         .cell {
         width: 50px;
         height: 40px;
+        border: none;
         }
 
         .submit {
@@ -59,10 +61,11 @@
 
         }
 
+
     </style>
 </head>
 <body>
-<form action="/saveResult" method="post">
+<form action="/saveResult1" method="post">
     <label for="calender"> 경기일 :
         <input type="date" id="calender" max="2070-12-31" min="2024-03-26" value="2024-04-03">
     </label>
@@ -92,7 +95,11 @@
             <option value="4q">4 쿼터</option>
         </select>
     </label>
+</form>
+<form action="/saveResult" method="post">
     <!--경기 결과입력-->
+    <h2>A팀 vs B팀</h2>
+    <h3>A팀</h3>
     <div class="table">
         <div class="table-header" style="text-align: center">
             <div class="table-cell">순번</div>
@@ -103,129 +110,816 @@
             <div class="table-cell">리바</div>
             <div class="table-cell">공리</div>
             <div class="table-cell">수리</div>
+            <div class="table-cell">득점</div>
             <div class="table-cell">실책</div>
-            <div class="table-cell">쿼터</div>
         </div>
         <div class="table-body">
             <div class="table-row">
                 <div class="table-cell" value="1">1</div>
-                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell" value="2">2</div>
-                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell" value="3">3</div>
-                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell" value="4">4</div>
-                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell" value="5">5</div>
-                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell" value="6">6</div>
-                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell" value="7">7</div>
-                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell" value="8">8</div>
-                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell" value="9">9</div>
-                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell" value="10">10</div>
-                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterAssist" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterSteel" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterBlock" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterRebound" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterOr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterDr" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playerQuarterTurnOver" class="cell"></div>
-                <div class="table-cell"><input type="number" name="playQuarter" class="cell"></div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+        </div>
+    </div>
+    <h3>B팀</h3>
+    <div class="table">
+        <div class="table-header" style="text-align: center">
+            <div class="table-cell">순번</div>
+            <div class="table-cell">이름</div>
+            <div class="table-cell">어시</div>
+            <div class="table-cell">스틸</div>
+            <div class="table-cell">블럭</div>
+            <div class="table-cell">리바</div>
+            <div class="table-cell">공리</div>
+            <div class="table-cell">수리</div>
+            <div class="table-cell">득점</div>
+            <div class="table-cell">실책</div>
+        </div>
+        <div class="table-body">
+            <div class="table-row">
+                <div class="table-cell" value="1">1</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="2">2</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="3">3</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="4">4</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="5">5</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="6">6</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="7">7</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="8">8</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="9">9</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="10">10</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+        </div>
+    </div>
+    <h2>B팀 vs C팀</h2>
+    <h3>B팀</h3>
+    <div class="table">
+        <div class="table-header" style="text-align: center">
+            <div class="table-cell">순번</div>
+            <div class="table-cell">이름</div>
+            <div class="table-cell">어시</div>
+            <div class="table-cell">스틸</div>
+            <div class="table-cell">블럭</div>
+            <div class="table-cell">리바</div>
+            <div class="table-cell">공리</div>
+            <div class="table-cell">수리</div>
+            <div class="table-cell">득점</div>
+            <div class="table-cell">실책</div>
+        </div>
+        <div class="table-body">
+            <div class="table-row">
+                <div class="table-cell" value="1">1</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="2">2</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="3">3</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="4">4</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="5">5</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="6">6</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="7">7</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="8">8</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="9">9</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="10">10</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+        </div>
+    </div>
+    <h3>C팀</h3>
+    <div class="table">
+        <div class="table-header" style="text-align: center">
+            <div class="table-cell">순번</div>
+            <div class="table-cell">이름</div>
+            <div class="table-cell">어시</div>
+            <div class="table-cell">스틸</div>
+            <div class="table-cell">블럭</div>
+            <div class="table-cell">리바</div>
+            <div class="table-cell">공리</div>
+            <div class="table-cell">수리</div>
+            <div class="table-cell">득점</div>
+            <div class="table-cell">실책</div>
+        </div>
+        <div class="table-body">
+            <div class="table-row">
+                <div class="table-cell" value="1">1</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="2">2</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="3">3</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="4">4</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="5">5</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="6">6</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="7">7</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="8">8</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="9">9</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="10">10</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+        </div>
+    </div>
+    <h2>C팀 vs A팀</h2>
+    <h3>C팀</h3>
+    <div class="table">
+        <div class="table-header" style="text-align: center">
+            <div class="table-cell">순번</div>
+            <div class="table-cell">이름</div>
+            <div class="table-cell">어시</div>
+            <div class="table-cell">스틸</div>
+            <div class="table-cell">블럭</div>
+            <div class="table-cell">리바</div>
+            <div class="table-cell">공리</div>
+            <div class="table-cell">수리</div>
+            <div class="table-cell">득점</div>
+            <div class="table-cell">실책</div>
+        </div>
+        <div class="table-body">
+            <div class="table-row">
+                <div class="table-cell" value="1">1</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="2">2</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="3">3</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="4">4</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="5">5</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="6">6</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="7">7</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="8">8</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="9">9</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="10">10</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+        </div>
+    </div>
+    <h3>A팀</h3>
+    <div class="table">
+        <div class="table-header" style="text-align: center">
+            <div class="table-cell">순번</div>
+            <div class="table-cell">이름</div>
+            <div class="table-cell">어시</div>
+            <div class="table-cell">스틸</div>
+            <div class="table-cell">블럭</div>
+            <div class="table-cell">리바</div>
+            <div class="table-cell">공리</div>
+            <div class="table-cell">수리</div>
+            <div class="table-cell">득점</div>
+            <div class="table-cell">실책</div>
+        </div>
+        <div class="table-body">
+            <div class="table-row">
+                <div class="table-cell" value="1">1</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="2">2</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="3">3</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="4">4</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="5">5</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="6">6</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="7">7</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="8">8</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="9">9</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" value="10">10</div>
+                <div class="table-cell"><input type="text" name="playerName" class="cell" placeholder="필수" value="${playerName}"></div>
+                <div class="table-cell"><input type="number" name="playerAssist" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerSteel" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerBlock" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerRebound" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerOr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerDr" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerGoal" class="cell"></div>
+                <div class="table-cell"><input type="number" name="playerTurnOver" class="cell"></div>
             </div>
         </div>
     </div>
@@ -238,6 +932,8 @@
     input.value = '0';
     });
     }
+
+
 </script>
 </body>
 </html>

@@ -58,8 +58,6 @@
         <div class="table-cell">나이</div>
         <div class="table-cell">키</div>
         <div class="table-cell">백넘버</div>
-        <div class="table-cell">총쿼터</div>
-        <div class="table-cell">총게임</div>
     </div>
     <div class="table-body">
         <div th:each="record, index : ${recordList}" class="table-row">
@@ -69,7 +67,7 @@
             <div class="table-cell" th:text="${record.playerQuarterAssist}"></div>
             <div class="table-cell" th:text="${record.playerQuarterSteel}"></div>
             <div class="table-cell" th:text="${record.playerQuarterBlock}"></div>
-            <div class="table-cell" th:text="${record.playerRebound}"></div>
+            <div class="table-cell" th:text="${record.playerQuarterRebound}"></div>
             <div class="table-cell" th:text="${record.playerQuarterOr}"></div>
             <div class="table-cell" th:text="${record.playerQuarterDr}"></div>
             <div class="table-cell" th:text="${record.playerQuarterTurnOver}"></div>
@@ -77,8 +75,6 @@
             <div class="table-cell" th:text="${record.playerAge}"></div>
             <div class="table-cell" th:text="${record.playerToll}"></div>
             <div class="table-cell" th:text="${record.playerBackNumber}"></div>
-            <div class="table-cell" th:text="${record.playQuarter}"></div>
-            <div class="table-cell" th:text="${record.playQuarter/4}"></div>
         </div>
     </div>
 </div>
