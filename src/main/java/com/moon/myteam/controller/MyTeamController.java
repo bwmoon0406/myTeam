@@ -2,6 +2,7 @@ package com.moon.myteam.controller;
 
 import com.moon.myteam.dto.MyTeamDTO;
 import com.moon.myteam.service.MyTeamService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,7 +56,7 @@ public class MyTeamController {
 
     // 새 게임
     @GetMapping("/newgame")
-    public String newGame() {
+    public String newGame(Model model) {
         return "newgame";
     }
 
@@ -63,6 +64,21 @@ public class MyTeamController {
     public String saveResult(MyTeamDTO myTeamDTO) {
         myTeamService.saveResult(myTeamDTO);
         return "newgame";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    @GetMapping("/signup")
+    public String signUp() {
+        return "signup";
+    }
+
+    @GetMapping("/find")
+    public String find(){
+        return "find";
     }
 }
 
