@@ -3,8 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
+
+      .signup-main {
+        font-size: 24px;
+        color:blue;
+        margin: 40px;
+        height: 100%;
+      }
+
+      .signup-wrapper {
+        width: 50%;
+        height: 800px;
+        box-sizing: border-box;
+        margin-left: 40px;
+      }
+
+      #login-form > input {
+        box-sizing: border-box;
+        width: 100%;
+        height: 48px;
+      }
+
+      #login-form > input[type="submit"] {
+        background-color: blue;
+        color: white;
+        font-size: 18px;
+        width: 30%;
+        height: 30px;
+        border-radius: 6px;
+        margin: 10px 10px 10px 0px;
+        display: inline-block;
+      }
+
+      .button {
+        font-size: 18px;
+        width: 30%;
+        height: 30px;
+        background-color: blue;
+        color: white;
+        border : 1px solid blue;
+        border-radius: 6px;
+        display: inline-block;
+        margin: 10px 10px 10px 0px;
+      }
+
+      #login-form > input[type="button"] {
+        background-color: blue;
+        color: white;
+        font-size: 18px;
+        width: 30%;
+        height: 30px;
+        border-radius: 6px;
+        margin: 10px 10px 10px 0px;
+        display: inline-block;
+      }
+
+
+    </style>
 </head>
 <body>
-   회원가입
+<div class="signup-main">회원가입</div>
+<div class="signup-wrapper">
+    <form action="/sign-up" method="post" id="login-form">
+        아이디 <input type="text" name="input-id" placeholder="사용 할 ID 입력">
+        비밀번호 <input type="text" name="input-pw" placeholder="사용 할 PW 입력">
+        비밀번호 확인<input type="text" name="pw-check" placeholder="PW 확인">
+        팀명 <input type="text" name="teamName" placeholder="팀 이름">
+        e-mail <input type="text" name="e-mail" placeholder="인증으로 인해 필수">
+        <input type="submit" value="완료" class="button">
+        <input type="button" value="뒤로" class="button" onclick="goBackToLogin()">
+</div>
+</form>
+<script>
+  function goBackToLogin(){
+    window.location.href = "/login";
+  }
+</script>
 </body>
 </html>
